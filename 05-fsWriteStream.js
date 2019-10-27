@@ -6,6 +6,9 @@ const writeStream = fs.createWriteStream('./05-fsWriteStream.txt')
 
 writeStream.write(data, 'utf8')
 
+writeStream.on('finish', () => console.log(`写入完成`))
+
 // 标记写入完成：
 writeStream.end()
 
+writeStream.on('error', ()=> console.log(`写入失败`))
