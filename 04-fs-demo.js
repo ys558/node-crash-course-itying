@@ -13,25 +13,18 @@ const fs = require('fs')
 // })
 
 // 找出/upload1下所有目录和文件，并打印出来
-var fileArr = []
-fs.readdir('upload1', (err, file) => {
+const fileArr = []
+fs.readdir('upload1',(err, file) => {
     if(err) {console.log(err)}
     else{
-        // for (let i in file) {
-        //     console.log(file[i])
-        //     fs.stat(`upload1/${file[i]}`, (err, stats)=>{
-        //         if(err) {
-        //             console.log(err)
-        //             return false
-        //         }else{
-        //             // console.log(stats.isDirectory())
-        //             if(stats.isDirectory()){
-        //                 fileArr.push(file[i])
-        //             }
-        //         }
-        //     })
-        // }
-        file.every()
+        // (function(i) {
+        // }(0))
+        file.forEach(item => {
+            fileArr.push(item)
+        })
+        console.log(fileArr)
+        
+
     }
 })
 // console.log(fileArr)
