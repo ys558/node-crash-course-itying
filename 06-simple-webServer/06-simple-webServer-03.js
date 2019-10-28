@@ -2,8 +2,11 @@ const http = require('http')
 // const url = require('url')
 const fs = require('fs')
 const path = require('path')
-const mime = require('./model/getmime')
+const mime = require('./model/getmineFileSync')
 const url = require('url')
+
+// const a = require('./model/getmineFile')
+// console.log(a.getMime(fs, '.png'));
 
 
 http.createServer((request, response) => {
@@ -12,8 +15,10 @@ http.createServer((request, response) => {
     const pathName = url.parse(request.url).pathname
     const extname = path.extname(pathName)
 
+
     // 过滤请求：
     if (pathName !== '/favicon.ico') {
+        // console.log(pathName)
         fs.readFile(`./static/${pathName}`, (err, data) => {
             if (err) {
                 
@@ -25,8 +30,7 @@ http.createServer((request, response) => {
                     response.end()
                 })
             } else {
-                // 页面虽然能出来，但仍有缺陷，图片类型无法处理：见06-simple-webServer\06-simple-webServer-03.js
-                response.writeHead(200, { 'Content-Type': mime.getMime(extname) })
+                response.writeHead(200, { 'Content-Type': mime.getMime(fs, extname) })
                 response.write(data)
                 response.end()
             }

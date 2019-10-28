@@ -7,6 +7,8 @@ exports.getMime = (extname) => {
             return 'text/css'
         case '.js':
             return 'text/javascript'
+        case '.png':
+            return ''
         default:
             return 'text/html'
     }
