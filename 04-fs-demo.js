@@ -14,9 +14,26 @@ const fs = require('fs')
 
 // 找出/upload1下所有目录和文件，并打印出来
 var fileArr = []
-fs.readdir('upload1', (err, file) => {
+fs.readdir('upload1', (err, files) => {
     if(err) {console.log(err)}
     else{
+        (function getFile(i){
+            if(i==files.length){
+                console.log(`目录：${fileArr}`)
+                console.log(fileArr)
+                return false
+            }
+            fs.stat(`upload1/${files[i]}`, (err,stats)=>{
+                if(stats.isDirectory()){
+                    fileArr.push(files[i])
+                }
+                getFile(i+1)
+            })
+        }(0))
+    }
+})
+console.log('1111111111:',fileArr)
+
         // for (let i in file) {
         //     console.log(file[i])
         //     fs.stat(`upload1/${file[i]}`, (err, stats)=>{
@@ -31,17 +48,3 @@ fs.readdir('upload1', (err, file) => {
         //         }
         //     })
         // }
-        file.every()
-    }
-})
-// console.log(fileArr)
-
-// const filesArr = []
-// fs.readdir('upload1', (err, flie) => {
-//     if(err) {console.log(err)}
-//     else{
-//         (function getFile(i){
-//             fs.stat
-//         }(0))
-//     }
-// })
