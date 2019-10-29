@@ -17,7 +17,7 @@ http.createServer((request, response)=>{
                     response.end()
                 })
             }else{
-                // 1. 回调：放在调用处：把07-callback-eventEmitter改写06服务器\model\getContentType.js封装的整个函数，放回调用的地方，第二个参数既是传值，又是接收值，并将要执行的其他步骤放在函数里执行：
+                // 1. 回调：把07-callback-eventEmitter改写06服务器\model\getContentType.js封装的整个函数，放在调用的地方，第二个参数既是传值，又是接收值，并将要执行的其他步骤放在函数里执行：
                 contentType.getContentType(extname, (contentTypeResult) => {
                     response.writeHead(200, { 'Content-Type': contentTypeResult })
                     response.write(data)
