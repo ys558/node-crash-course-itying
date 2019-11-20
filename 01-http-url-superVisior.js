@@ -32,9 +32,10 @@ http.createServer((request,response) => {
     //     path: '/news?aa=11',
     //     href: '/news?aa=11' }
     
-    response.writeHead(200,{"Content-Type":"text/html"});
-    // 字符集是 utf-8,在这里设置：要不乱码
-    response.write('<head><meta charset="utf-8"/></head>');
+    // 1. 方法1: 设置字符集utf-8
+    response.writeHead(200,{"Content-Type":"text/html; charset=utf-8"});
+    // 2. 方法2: 设置字符集utf-8
+    // response.write('<head><meta charset="utf-8"/></head>');
     response.write('cbuw');
     response.end(); /*结束响应*/
 }).listen(8001, '127.0.0.1', ()=> console.log(`listen on port 8001`));

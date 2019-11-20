@@ -1,4 +1,5 @@
-const app = require('./09-expressRouter-consealRouter')
+// const app = require('./09-expressRouter-consealRouter')
+const app = require('./09-expressRouter-consealRouter-byES6Class')
 const http = require('http')
 const ejs = require('ejs')
 
